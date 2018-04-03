@@ -37,7 +37,7 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
 # set repo
-wget -O /etc/apt/sources.list "https://github.com/DevGracyy/debian7/blob/master/sources.list.debian7"
+wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/DevGracyy/debian7/master/sources.list.debian7"
 wget "http://www.dotdeb.org/dotdeb.gpg"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
@@ -61,37 +61,37 @@ echo 'echo -e ""' >> .bashrc
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://github.com/DevGracyy/debian7/blob/master/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/DevGracyy/debian7/master/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>ADMIN GRACYY</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://github.com/DevGracyy/debian7/blob/master/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/DevGracyy/debian7/master/vps.conf"
 service nginx restart
 
 # install openvpn
-wget -O /etc/openvpn/openvpn.tar "https://github.com/DevGracyy/debian7/blob/master/openvpn-debian.tar"
+wget -O /etc/openvpn/openvpn.tar "https://raw.githubusercontent.com/DevGracyy/debian7/master/openvpn-debian.tar"
 cd /etc/openvpn/
 tar xf openvpn.tar
-wget -O /etc/openvpn/1194.conf "https://github.com/DevGracyy/debian7/blob/master/1194.conf"
+wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/DevGracyy/debian7/master/1194.conf"
 service openvpn restart
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
 iptables-save > /etc/iptables_yg_baru_dibikin.conf
-wget -O /etc/network/if-up.d/iptables "https://github.com/DevGracyy/debian7/blob/master/iptables"
+wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/DevGracyy/debian7/master/iptables"
 chmod +x /etc/network/if-up.d/iptables
 service openvpn restart
 
 # konfigurasi openvpn
 cd /etc/openvpn/
-wget -O /etc/openvpn/client.ovpn "https://github.com/DevGracyy/debian7/blob/master/client-1194.conf"
+wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/DevGracyy/debian7/master/client-1194.conf"
 sed -i $MYIP2 /etc/openvpn/client.ovpn;
 cp client.ovpn /home/vps/public_html/
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://github.com/DevGracyy/debian7/blob/master/badvpn-udpgw"
+wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/DevGracyy/debian7/master/badvpn-udpgw"
 if [ "$OS" == "x86_64" ]; then
-  wget -O /usr/bin/badvpn-udpgw "https://github.com/DevGracyy/debian7/blob/master/badvpn-udpgw64"
+  wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/DevGracyy/debian7/master/badvpn-udpgw64"
 fi
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
@@ -114,7 +114,7 @@ service dropbear restart
 # install squid3
 cd
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://github.com/DevGracyy/debian7/blob/master/squid3.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/DevGracyy/debian7/master/squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
@@ -156,16 +156,16 @@ gem install lolcat
 
 # download script
 cd /usr/bin
-wget -O menu "https://github.com/DevGracyy/debian7/blob/master/menu.sh"
-wget -O usernew "https://github.com/DevGracyy/debian7/blob/master/usernew.sh"
-wget -O trial "https://github.com/DevGracyy/debian7/blob/master/trial.sh"
-wget -O delete "https://github.com/DevGracyy/debian7/blob/master/hapus.sh"
-wget -O check "https://github.com/DevGracyy/debian7/blob/master/user-login.sh"
-wget -O member "https://github.com/DevGracyy/debian7/blob/master/user-list.sh"
-wget -O dagjr "https://github.com/DevGracyy/debian7/blob/master/resvis.sh"
-wget -O speedtest "https://github.com/DevGracyy/debian7/blob/master/speedtest_cli.py"
-wget -O info "https://github.com/DevGracyy/debian7/blob/master/info.sh"
-wget -O about "https://github.com/DevGracyy/debian7/blob/master/about.sh"
+wget -O menu "https://raw.githubusercontent.com/DevGracyy/debian7/master/menu.sh"
+wget -O usernew "https://raw.githubusercontent.com/DevGracyy/debian7/master/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/DevGracyy/debian7/master/trial.sh"
+wget -O delete "https://raw.githubusercontent.com/DevGracyy/debian7/master/hapus.sh"
+wget -O check "https://raw.githubusercontent.com/DevGracyy/debian7/master/user-login.sh"
+wget -O member "https://raw.githubusercontent.com/DevGracyy/debian7/master/user-list.sh"
+wget -O dagjr "https://raw.githubusercontent.com/DevGracyy/debian7/master/resvis.sh"
+wget -O speedtest "https://raw.githubusercontent.com/DevGracyy/debian7/master/speedtest_cli.py"
+wget -O info "https://raw.githubusercontent.com/DevGracyy/debian7/master/info.sh"
+wget -O about "https://raw.githubusercontent.com/DevGracyy/debian7/master/about.sh"
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 
